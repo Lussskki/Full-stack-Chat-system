@@ -13,8 +13,8 @@ const signup = async (req,res) => {
         return res.status(400).json({message: 'Please provide Nick or Password'})
     }
     try{
-        const existingUser = await UserSchema.find({ $or: [{nick}, {password}]})
-        if (!existingUser) {
+        const existingUser = await UserSchema.findOne({ nick })
+        if (existingUser) {
             return res.status(400).json({message: 'Nick is already taken'})
         }
 
