@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 // Connection string of database
-const connectionString = process.env.connectionString
+const connectionString = process.env.CONNECTION_STRING
 
 try{
     mongosee.connect(connectionString)

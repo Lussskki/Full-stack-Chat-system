@@ -14,6 +14,7 @@ const login = async (req, res) =>{
     try{
         // Find nick
         const user = await UserSchema.findOne({nick})
+        // console.log(`Login: `,user)
         // User not find
         if (!user) {
             return res.status(401).json({message:'User not found'})
@@ -25,9 +26,11 @@ const login = async (req, res) =>{
         }
         // Generating token
         const token = generateToken(user._id)
+        // console.log(`Login token: `,token)
         // Send token to successfuly login
         return res.status(200).json({message: 'Login successful', token})
     }catch(error){
+        console.log(error)
         return res.status(500).json({message: 'Error during login', error})
     }
 

@@ -4,10 +4,11 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const generateToken = (_Id, nick) => {
-    const jwtSecret = process.env.jwtSecret
+
+const generateToken = (_id, nick) => {
+    const jwtSecret = process.env.JWT_SECRET
     return jwt.sign(
-        {_Id, nick},
+        {_id, nick},
         jwtSecret,
         {expiresIn: '1h'}
         

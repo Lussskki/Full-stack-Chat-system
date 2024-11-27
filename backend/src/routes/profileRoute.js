@@ -1,9 +1,10 @@
 // src/routes/profileRoute.js
 import express from 'express'
-import profileController from '../controllers/loginController.js'
+import profileController from '../controllers/profileController.js'
+import authMiddleware from '../utils/profileMiddleware.js'
  
-const routeSignup = express.Router()
+const routeProfile = express.Router()
+// fetch all data 
+routeProfile.get('/', authMiddleware,profileController)
 
-routeSignup.post('/', profileController)
-
-export default routeSignup
+export default routeProfile
