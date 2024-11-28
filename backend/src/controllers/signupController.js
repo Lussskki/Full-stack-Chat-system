@@ -24,7 +24,7 @@ const signup = async (req,res) => {
         // New user
         const newUser = new UserSchema({nick, password: hashPassword})
         await newUser.save() 
-        // console.log(newUser)
+        // console.log('New user: ',newUser)
 
         // Generate token
         const token = generateToken(newUser._id, newUser.nick)
